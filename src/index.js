@@ -1,19 +1,51 @@
 // DO WHATEVER YOU WANT HERE
 
-const createEnumerableProperty = () => {};
-const createNotEnumerableProperty = () => {};
-const createProtoMagicObject = () => {};
-const incrementor = () => {};
+const createEnumerableProperty = (propertyName) => {return propertyName};
+
+const createNotEnumerableProperty = (propertyName) => {return Symbol(propertyName)};
+
+const createProtoMagicObject = () => {
+    function magicObj() {}
+    magicObj.__proto__ = magicObj.prototype;
+    return magicObj;
+};
+
+const incrementor = () => {
+    if (!incrementor.__proto__.currentCount) {
+        incrementor.__proto__.currentCount = 1; 
+    }
+    else result();
+
+   incrementor.__proto__.toString = function() {
+        return incrementor.__proto__.currentCount;
+    }
+
+    return result = function() {
+        incrementor.__proto__.currentCount++;
+        return result;
+    }
+};
+
 const asyncIncrementor = () => {};
 const createIncrementer = () => {};
 
 // return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = () => {};
 const getDeepPropertiesCount = () => {};
-const createSerializedObject = () => {};
+const createSerializedObject = () => {return null};
 const toBuffer = () => {};
-const sortByProto = () => {};
-
+const sortByProto = (arr) => { 
+    return arr.sort( (a,b) => {return (count(a)-count(b)) } );
+  
+ function count(obj) {
+     let countProto = 0;
+     while ( obj.__proto__) {
+         countProto++;
+         obj = obj.__proto__;
+     }
+     return countProto;
+ };
+}
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;
 exports.createProtoMagicObject = createProtoMagicObject;
