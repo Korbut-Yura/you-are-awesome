@@ -26,11 +26,19 @@ const incrementor = () => {
     }
 };
 
-const asyncIncrementor = () => {};
+const asyncIncrementor = () => {
+    if (!asyncIncrementor.__proto__.count) {
+        asyncIncrementor.__proto__.count = 1; 
+    }
+    else asyncIncrementor.__proto__.count++
+    
+    return Promise.resolve(asyncIncrementor.__proto__.count)
+};
+
 const createIncrementer = () => {};
 
 // return same argument not earlier than in one second, and not later, than in two
-const returnBackInSecond = () => {};
+const returnBackInSecond = (param) => {return new Promise(function(resolve , reject) { setTimeout (resolve(param),2000) })};
 const getDeepPropertiesCount = () => {};
 const createSerializedObject = () => {return null};
 const toBuffer = () => {};
