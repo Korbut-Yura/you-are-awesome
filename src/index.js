@@ -31,11 +31,16 @@ const asyncIncrementor = () => {
         asyncIncrementor.__proto__.count = 1; 
     }
     else asyncIncrementor.__proto__.count++
-    
+
     return Promise.resolve(asyncIncrementor.__proto__.count)
 };
 
-const createIncrementer = () => {};
+function* createIncrementer () {
+    var index = 1;
+        while(true)
+        yield index++;
+      }
+
 
 // return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = (param) => {return new Promise(function(resolve , reject) { setTimeout (resolve(param),2000) })};
